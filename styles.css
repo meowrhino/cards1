@@ -1,0 +1,241 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Courier New", Courier, monospace;
+  background: #111;
+  color: #eee;
+  min-height: 100vh;
+}
+
+/* Views */
+.view {
+  display: none;
+  padding: 24px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+.view.active {
+  display: block;
+}
+
+/* Home */
+#home {
+  text-align: center;
+  padding-top: 120px;
+}
+#home h1 {
+  font-size: 48px;
+  letter-spacing: 12px;
+  margin-bottom: 48px;
+}
+.home-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+.home-buttons button {
+  font-size: 18px;
+  padding: 16px 32px;
+}
+.home-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+/* Buttons */
+button {
+  font-family: inherit;
+  background: #222;
+  color: #eee;
+  border: 1px solid #555;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+}
+button:hover {
+  background: #333;
+  border-color: #888;
+}
+button.small {
+  font-size: 12px;
+  padding: 6px 12px;
+}
+
+/* Header */
+header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+header h2 {
+  font-size: 24px;
+}
+
+/* Card grid */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 20px;
+}
+
+/* Card */
+.card {
+  width: 160px;
+  height: 224px;
+  border: 2px solid #888;
+  box-shadow: 4px 4px 0 #000;
+  background: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  cursor: default;
+}
+.card-name {
+  text-align: center;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 6px 4px 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.card-emoji {
+  width: 120px;
+  height: 100px;
+  margin: 0 auto;
+  border: 1px solid #555;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  background: #222;
+}
+.card-effect {
+  height: 28px;
+  margin: 4px 8px;
+  border: 1px solid #444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: #aaa;
+  background: #1e1e1e;
+}
+.card-effect.empty {
+  border-color: transparent;
+  background: transparent;
+}
+.card-stats {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  margin-top: auto;
+  padding-bottom: 8px;
+}
+.stat {
+  font-size: 16px;
+  font-weight: bold;
+}
+.stat-atk { color: #F00; }
+.stat-dir { color: #00F; }
+.stat-def { color: #0F0; }
+
+/* Empty msg */
+.empty-msg {
+  text-align: center;
+  color: #666;
+  margin-top: 48px;
+}
+
+/* Creator */
+.creator-layout {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+#card-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 260px;
+}
+#card-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+  color: #aaa;
+}
+#card-form input,
+#card-form select {
+  font-family: inherit;
+  background: #222;
+  color: #eee;
+  border: 1px solid #555;
+  padding: 8px;
+  font-size: 14px;
+}
+#card-form input:focus,
+#card-form select:focus {
+  outline: none;
+  border-color: #aaa;
+}
+#card-form button[type="submit"] {
+  margin-top: 8px;
+  padding: 12px;
+  font-size: 16px;
+  background: #333;
+  border-color: #888;
+}
+
+.preview-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.preview-area h3 {
+  font-size: 14px;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Card in grid: clickable delete */
+.card-grid .card {
+  position: relative;
+}
+.card .delete-btn {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 20px;
+  height: 20px;
+  background: #111;
+  border: 1px solid #555;
+  color: #888;
+  font-size: 12px;
+  padding: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  line-height: 1;
+}
+.card:hover .delete-btn {
+  display: flex;
+}
+.card .delete-btn:hover {
+  color: #F00;
+  border-color: #F00;
+}

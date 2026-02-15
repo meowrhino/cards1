@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cards</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <!-- HOME -->
+    <section id="home" class="view active">
+      <h1>CARDS</h1>
+      <div class="home-buttons">
+        <button onclick="showView('viewer')">Ver cartas</button>
+        <button onclick="showView('creator')">Crear carta</button>
+      </div>
+      <div class="home-actions">
+        <button class="small" onclick="exportZip()">Exportar ZIP</button>
+        <button class="small" onclick="document.getElementById('import-zip').click()">Importar ZIP</button>
+        <input type="file" id="import-zip" accept=".zip" hidden onchange="importZip(event)">
+      </div>
+    </section>
+
+    <!-- VIEWER -->
+    <section id="viewer" class="view">
+      <header>
+        <button onclick="showView('home')">← Inicio</button>
+        <h2>Cartas</h2>
+      </header>
+      <div id="card-grid" class="card-grid"></div>
+      <p id="no-cards" class="empty-msg" hidden>No hay cartas. Crea una primero.</p>
+    </section>
+
+    <!-- CREATOR -->
+    <section id="creator" class="view">
+      <header>
+        <button onclick="showView('home')">← Inicio</button>
+        <h2>Crear carta</h2>
+      </header>
+      <div class="creator-layout">
+        <form id="card-form" onsubmit="saveCard(event)">
+          <label>Nombre
+            <input type="text" id="f-name" required maxlength="30">
+          </label>
+          <label>Emoji (ilustración)
+            <input type="text" id="f-emoji" required maxlength="4" placeholder="🐉">
+          </label>
+          <label>Ataque
+            <input type="number" id="f-attack" min="0" max="99" value="0" required>
+          </label>
+          <label>Defensa
+            <input type="number" id="f-defense" min="0" max="99" value="0" required>
+          </label>
+          <label>Ataque directo
+            <input type="number" id="f-direct" min="0" max="99" value="0" required>
+          </label>
+          <label>Efecto
+            <select id="f-effect">
+              <option value="">Sin efecto</option>
+            </select>
+          </label>
+          <button type="submit">Guardar carta</button>
+        </form>
+        <div class="preview-area">
+          <h3>Preview</h3>
+          <div id="card-preview"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
